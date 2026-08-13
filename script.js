@@ -25,31 +25,22 @@ if (menuBtn && sidebar) {
 /* ========================= SEARCH ========================= */
 
 function searchVideos(query) {
-
     query = query.trim().toLowerCase();
 
     videoCards.forEach(card => {
 
-        const title = card.querySelector(".video-info h3")
-            .textContent
-            .toLowerCase();
+        const title = card.querySelector(".video-info h3").textContent.toLowerCase();
 
-        const channel = card.querySelector(".video-info p")
-            .textContent
-            .toLowerCase();
+        const channel = card.querySelector(".video-info p").textContent.toLowerCase();
 
         if (
-            query === "" ||
-            title.includes(query) ||
-            channel.includes(query)
+            query === "" || title.includes(query) || channel.includes(query)
         ) {
             card.style.display = "";
         } else {
             card.style.display = "none";
         }
-
     });
-
 }
 
 if (searchForm) {
@@ -68,7 +59,6 @@ if (searchInput) {
 /* ========================= CATEGORY ========================= */
 
 categoryButtons.forEach(button => {
-
     button.addEventListener("click", () => {
 
         categoryButtons.forEach(btn => {
@@ -77,85 +67,61 @@ categoryButtons.forEach(button => {
 
         button.classList.add("active");
 
-        const selectedCategory =
-            button.textContent.trim().toLowerCase();
+        const selectedCategory = button.textContent.trim().toLowerCase();
 
         searchInput.value = "";
 
         videoCards.forEach(card => {
 
-            const cardCategory =
-                card.dataset.category;
+            const cardCategory = card.dataset.category;
 
-            if (
-                selectedCategory === "all" ||
-                cardCategory === selectedCategory
-            ) {
+            if (selectedCategory === "all" || cardCategory === selectedCategory) {
                 card.style.display = "";
             } else {
                 card.style.display = "none";
             }
-
         });
-
     });
-
 });
 
 /* ========================= SIDEBAR ACTIVE ========================= */
 
 sideItems.forEach(item => {
-
     item.addEventListener("click", () => {
-
-        sideItems.forEach(i =>
-            i.classList.remove("active")
-        );
+        sideItems.forEach(i => i.classList.remove("active"));
 
         item.classList.add("active");
-
     });
-
 });
 
 /* ========================= THUMBNAIL CLICK ========================= */
 
 videoCards.forEach(card => {
-
     const thumbnail = card.querySelector(".thumbnail");
 
     if (thumbnail) {
-
         thumbnail.addEventListener("click", e => {
-
             e.preventDefault();
 
             const title = card.querySelector(".video-info h3").textContent;
 
             alert("Playing: " + title);
-
         });
-
     }
-
 });
 
 /* ========================= PROFILE ========================= */
 
 if (profileBtn) {
-
     profileBtn.addEventListener("click", () => {
 
         alert("Profile Clicked");
-
     });
-
 }
 
 /* ========================= NOTIFICATIONS ========================= */
 
 if (notificationBtn) {
-
     notificationBtn.addEventListener("click", () => {
 
         const badge = notificationBtn.querySelector("span");
@@ -165,19 +131,15 @@ if (notificationBtn) {
         }
 
         alert("Notifications Opened");
-
     });
-
 }
 
 /* ========================= ESC ========================= */
 
 document.addEventListener("keydown", e => {
-
     if (e.key === "Escape") {
         searchInput.blur();
     }
-
 });
 
 console.log("YouTube Clone Loaded Successfully ✅");
