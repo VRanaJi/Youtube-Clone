@@ -33,9 +33,7 @@ function searchVideos(query) {
 
         const channel = card.querySelector(".video-info p").textContent.toLowerCase();
 
-        if (
-            query === "" || title.includes(query) || channel.includes(query)
-        ) {
+        if (query === "" || title.includes(query) || channel.includes(query)) {
             card.style.display = "";
         } else {
             card.style.display = "none";
